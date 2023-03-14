@@ -23,27 +23,39 @@ chromedriver_autoinstaller.install()
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()
-    # Successful login
-    suite.addTest(SuccessfulLogin("valid_username_and_password"))
 
-    # Failed login
-    suite.addTest(FailedLogin("invalid_username"))
-    suite.addTest(FailedLogin("invalid_password"))
-    suite.addTest(FailedLogin("blank_username_and_password"))
-    suite.addTest(FailedLogin("valid_username_blank_password"))
-    suite.addTest(FailedLogin("blank_username_valid_password"))
+    # Add successful login tests
+    success_tests = [SuccessfulLogin("valid_username_and_password")]
 
-    # Logout
-    suite.addTest(Logout("log_out"))
+    # Add failed login tests
+    fail_tests = [
+        FailedLogin("invalid_username"),
+        FailedLogin("invalid_password"),
+        FailedLogin("blank_username_and_password"),
+        FailedLogin("valid_username_blank_password"),
+        FailedLogin("blank_username_valid_password")
+    ]
 
-    # Reset password
-    suite.addTest(ResetPassword("redirect_to_reset_password_page"))
-    suite.addTest(ResetPassword("cancel_reset_password"))
-    suite.addTest(ResetPassword("valid_username"))
-    suite.addTest(ResetPassword("blank_username"))
+    # Add logout tests
+    logout_tests = [Logout("log_out")]
 
-    # Route Protection
-    suite.addTest(ProtectedRoute("protect_dashboard_page"))
+    # Add reset password tests
+    reset_password_tests = [
+        ResetPassword("redirect_to_reset_password_page"),
+        ResetPassword("cancel_reset_password"),
+        ResetPassword("valid_username"),
+        ResetPassword("blank_username")
+    ]
+
+    # Add route protection tests
+    protected_route_tests = [ProtectedRoute("protect_dashboard_page")]
+
+    # Add all the tests to the suite using addTests
+    suite.addTests(success_tests)
+    suite.addTests(fail_tests)
+    suite.addTests(logout_tests)
+    suite.addTests(reset_password_tests)
+    suite.addTests(protected_route_tests)
 
     runner = unittest.TextTestRunner()
     results = runner.run(suite)

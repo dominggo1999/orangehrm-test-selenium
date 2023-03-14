@@ -25,10 +25,10 @@ if __name__ == "__main__":
     suite = unittest.TestSuite()
 
     # Add successful login tests
-    success_tests = [SuccessfulLogin("valid_username_and_password")]
+    successful_login_tests = [SuccessfulLogin("valid_username_and_password")]
 
     # Add failed login tests
-    fail_tests = [
+    failed_login_tests = [
         FailedLogin("invalid_username"),
         FailedLogin("invalid_password"),
         FailedLogin("blank_username_and_password"),
@@ -51,8 +51,8 @@ if __name__ == "__main__":
     protected_route_tests = [RouteProtection("protect_dashboard_page")]
 
     # Add all the tests to the suite using addTests
-    suite.addTests(success_tests)
-    suite.addTests(fail_tests)
+    suite.addTests(successful_login_tests)
+    suite.addTests(failed_login_tests)
     suite.addTests(logout_tests)
     suite.addTests(reset_password_tests)
     suite.addTests(protected_route_tests)

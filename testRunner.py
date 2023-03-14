@@ -2,6 +2,8 @@ import unittest
 from e2e.auth.successful_login import SuccessfulLogin
 from e2e.auth.failed_login import FailedLogin
 from e2e.auth.log_out import Logout
+from e2e.auth.reset_password import ResetPassword
+from e2e.auth.protected_route import ProtectedRoute
 import chromedriver_autoinstaller
 import os
 import sys
@@ -33,6 +35,15 @@ if __name__ == "__main__":
 
     # Logout
     suite.addTest(Logout("log_out"))
+
+    # Reset password
+    suite.addTest(ResetPassword("redirect_to_reset_password_page"))
+    suite.addTest(ResetPassword("cancel_reset_password"))
+    suite.addTest(ResetPassword("valid_username"))
+    suite.addTest(ResetPassword("blank_username"))
+
+    # Route Protection
+    suite.addTest(ProtectedRoute("protect_dashboard_page"))
 
     runner = unittest.TextTestRunner()
     results = runner.run(suite)

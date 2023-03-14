@@ -7,6 +7,7 @@ from pages.dashboard_page import DashboardPage
 class RouteProtection (unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
+        self.browser.maximize_window()
         self.dashboard_page = DashboardPage(self.browser)
 
     def tearDown(self):

@@ -10,6 +10,7 @@ from config.credentials import VALID_PASSWORD
 class ResetPassword (unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
+        self.browser.maximize_window()
         self.login_page = LoginPage(self.browser)
         self.reset_password_page = ResetPasswordPage(self.browser)
 

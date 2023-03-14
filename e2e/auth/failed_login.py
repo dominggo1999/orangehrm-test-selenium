@@ -9,6 +9,7 @@ from pages.login_page import LoginPage
 class FailedLogin (unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
+        self.browser.maximize_window()
         self.login_page = LoginPage(self.browser)
 
     def tearDown(self):

@@ -1,0 +1,42 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Python virtual environments
+venv/
+env/
+*.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Package files
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Log files
+*.log
+
+# Test results
+coverage_html/
+.coverage
+.tox/
+nosetests.xml
+
+# Other generated files
+*.pyo
+*.pyd
+*.class
+*.o
+*.so
+*.dll
+
+# Miscellaneous
+.DS_Store
+*.bak
+*.swp
+*.tmp
+*.temp

@@ -1,6 +1,7 @@
 import unittest
 from e2e.auth.successful_login import SuccessfulLogin
 from e2e.auth.failed_login import FailedLogin
+from e2e.auth.log_out import Logout
 import chromedriver_autoinstaller
 import os
 import sys
@@ -29,6 +30,9 @@ if __name__ == "__main__":
     suite.addTest(FailedLogin("blank_username_and_password"))
     suite.addTest(FailedLogin("valid_username_blank_password"))
     suite.addTest(FailedLogin("blank_username_valid_password"))
+
+    # Logout
+    suite.addTest(Logout("log_out"))
 
     runner = unittest.TextTestRunner()
     results = runner.run(suite)

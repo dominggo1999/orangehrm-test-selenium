@@ -4,7 +4,7 @@ from support.commands import should_include_login_page_url
 from pages.dashboard_page import DashboardPage
 
 
-class ProtectedRoute (unittest.TestCase):
+class RouteProtection (unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         self.dashboard_page = DashboardPage(self.browser)

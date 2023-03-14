@@ -3,7 +3,7 @@ from e2e.auth.successful_login import SuccessfulLogin
 from e2e.auth.failed_login import FailedLogin
 from e2e.auth.log_out import Logout
 from e2e.auth.reset_password import ResetPassword
-from e2e.auth.protected_route import ProtectedRoute
+from e2e.auth.route_protection import RouteProtection
 import chromedriver_autoinstaller
 import os
 import sys
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     ]
 
     # Add route protection tests
-    protected_route_tests = [ProtectedRoute("protect_dashboard_page")]
+    protected_route_tests = [RouteProtection("protect_dashboard_page")]
 
     # Add all the tests to the suite using addTests
     suite.addTests(success_tests)

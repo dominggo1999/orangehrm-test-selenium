@@ -1,5 +1,6 @@
 import unittest
-from e2e.login_page.login import SuccessfulLogin
+from e2e.auth.successful_login import SuccessfulLogin
+from e2e.auth.failed_login import FailedLogin
 import chromedriver_autoinstaller
 import os
 import sys
@@ -19,8 +20,16 @@ chromedriver_autoinstaller.install()
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()
+    # Successful login
     suite.addTest(SuccessfulLogin("valid_username_and_password"))
-    suite.addTest(SuccessfulLogin("just_testing_login_command"))
+
+    # Failed login
+    suite.addTest(FailedLogin("invalid_username"))
+    suite.addTest(FailedLogin("invalid_password"))
+    suite.addTest(FailedLogin("blank_username_and_password"))
+    suite.addTest(FailedLogin("valid_username_blank_password"))
+    suite.addTest(FailedLogin("blank_username_valid_password"))
+
     runner = unittest.TextTestRunner()
     results = runner.run(suite)
 

@@ -4,6 +4,7 @@ from e2e.auth.failed_login import FailedLogin
 from e2e.auth.log_out import Logout
 from e2e.auth.reset_password import ResetPassword
 from e2e.auth.route_protection import RouteProtection
+from e2e.sidebar import Sidebar
 import chromedriver_autoinstaller
 import os
 import sys
@@ -13,7 +14,7 @@ import sys
 is_running_on_github_actions = os.getenv('GITHUB_ACTIONS') == 'true'
 
 # If running on Github Actions, start virtual display
-if is_running_on_github_actions:
+if not is_running_on_github_actions:
     from pyvirtualdisplay import Display
     display = Display(visible=0, size=(1200, 1200))
     display.start()
@@ -24,6 +25,7 @@ chromedriver_autoinstaller.install()
 if __name__ == "__main__":
     suite = unittest.TestSuite()
 
+    # AUTH
     # Add successful login tests
     successful_login_tests = [SuccessfulLogin("valid_username_and_password")]
 
@@ -56,6 +58,17 @@ if __name__ == "__main__":
     suite.addTests(logout_tests)
     suite.addTests(reset_password_tests)
     suite.addTests(protected_route_tests)
+
+    # SIDEBAR
+    sidebar = [
+        Sidebar("sidebar_is_visible_on_large_screen"),
+        Sidebar("toggling_sidebar_on_large_screen_size"),
+        Sidebar("all_links_work_properly"),
+        Sidebar("sidebar_search_valid_value"),
+        Sidebar("sidebar_search_invalid_value"),
+    ]
+
+    suite.addTests(sidebar)
 
     runner = unittest.TextTestRunner()
     results = runner.run(suite)

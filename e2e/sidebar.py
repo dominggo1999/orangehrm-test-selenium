@@ -1,5 +1,5 @@
 import time
-from sections.sidebar import SidebarSection
+from sections.sidebar_section import SidebarSection
 import unittest
 from selenium import webdriver
 from support.commands import login

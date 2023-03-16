@@ -19,7 +19,7 @@ def loginWith(browser: webdriver.Chrome, username, password):
         login_page.passwordField().send_keys(password)
 
     # click the login button
-    login_page.loginButton().click()
+    login_page.submit()
 
 
 def login(browser: webdriver.Chrome):

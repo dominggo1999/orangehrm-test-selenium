@@ -43,3 +43,6 @@ class LoginPage():
 
     def invalidCredentialsMsg(self) -> WebElement:
         return self.browser.find_element(By.CSS_SELECTOR, ".oxd-alert-content > .oxd-text")
+
+    def submit(self):
+        self.loginButton().click()

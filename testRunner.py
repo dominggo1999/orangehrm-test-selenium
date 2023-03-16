@@ -14,7 +14,7 @@ import sys
 is_running_on_github_actions = os.getenv('GITHUB_ACTIONS') == 'true'
 
 # If running on Github Actions, start virtual display
-if not is_running_on_github_actions:
+if is_running_on_github_actions:
     from pyvirtualdisplay import Display
     display = Display(visible=0, size=(1200, 1200))
     display.start()

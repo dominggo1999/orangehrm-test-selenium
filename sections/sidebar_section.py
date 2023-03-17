@@ -20,9 +20,13 @@ class SidebarSection():
         return self.browser.find_element(
             By.CSS_SELECTOR, ".oxd-sidepanel-body > div > div > button")
 
-    def getAllLinks(self) -> List[WebElement]:
+    def get_all_links(self) -> List[WebElement]:
         return self.browser.find_elements(
             By.CSS_SELECTOR, ".oxd-sidepanel-body ul.oxd-main-menu a")
 
     def toggle(self):
         self.toggle_button().click()
+
+    def click_link_with_text(self, text):
+        self.sidebar().find_element_by_xpath(
+            f"//a[contains(text(),'{text}')]").click()

@@ -75,5 +75,5 @@ if __name__ == "__main__":
 
     # Check if there were any failures and return non-zero exit status code
     # This is to ensure that Github Actions fails the build when there are failing tests
-    if is_running_on_github_actions and results.failures:
+    if is_running_on_github_actions and (results.failures or results.errors):
         sys.exit(1)

@@ -28,5 +28,5 @@ class SidebarSection():
         self.toggle_button().click()
 
     def click_link_with_text(self, text):
-        self.sidebar().find_element_by_xpath(
-            f"//a[contains(text(),'{text}')]").click()
+        self.sidebar().find_element(By.LINK_TEXT,
+                                    text).click()

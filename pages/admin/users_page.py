@@ -1,13 +1,18 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from utils.create_target_url import create_target_url
+from selenium.webdriver.remote.webelement import WebElement
+from typing import List
+
+# TODO
+# Add typing for elements
 
 
 class UsersPage:
     def __init__(self, browser: WebDriver):
         self.browser = browser
         self.url = create_target_url("/admin/viewSystemUsers")
-        self.displayedUserData = [
+        self.displayed_user_data = [
             "Username",
             "User Role",
             "Employee Name",
@@ -42,7 +47,7 @@ class UsersPage:
     def add_user_button(self):
         return self.browser.find_element(By.CSS_SELECTOR, ".orangehrm-header-container > .oxd-button")
 
-    def user_table_rows(self):
+    def user_table_rows(self) -> List[WebElement]:
         return self.user_table().find_elements(By.CSS_SELECTOR, ".oxd-table-card")
 
     def last_user_row(self):

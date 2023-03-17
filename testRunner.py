@@ -1,10 +1,19 @@
 import unittest
+
+# Auth (A)
 from e2e.auth.successful_login import SuccessfulLogin
 from e2e.auth.failed_login import FailedLogin
 from e2e.auth.log_out import Logout
 from e2e.auth.reset_password import ResetPassword
 from e2e.auth.route_protection import RouteProtection
+
+# Sidebar (SB)
 from e2e.sidebar import Sidebar
+
+# Admin (ADM)
+from e2e.admin.open_admin_page import OpenAdminPage
+from e2e.admin.user_management import UserManagement
+
 import chromedriver_autoinstaller
 import os
 import sys
@@ -69,6 +78,26 @@ if __name__ == "__main__":
     ]
 
     suite.addTests(sidebar)
+
+    # Admin
+    open_admin_page = [OpenAdminPage("admin_link_redirection")]
+    user_management = [
+        UserManagement("display_users_table"),
+        UserManagement("display_user_filter"),
+        UserManagement("add_new_user"),
+        UserManagement("add_user_blank_data"),
+        UserManagement("cancel_add_user"),
+        UserManagement("edit_user"),
+        UserManagement("edit_user_blank_data"),
+        UserManagement("cancel_edit"),
+        UserManagement("delete_user"),
+        UserManagement("cancel_delete_user"),
+        UserManagement("filter_user"),
+        UserManagement("reset_user_filter"),
+    ]
+
+    suite.addTests(open_admin_page)
+    suite.addTests(user_management)
 
     runner = unittest.TextTestRunner()
     results = runner.run(suite)

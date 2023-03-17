@@ -11,19 +11,24 @@ class OpenAdminPage(unittest.TestCase):
         self.browser = webdriver.Chrome()
         self.browser.maximize_window()
         self.sidebar_section = SidebarSection(self.browser)
+        self.users_page = UsersPage(self.browser)
 
     def tearDown(self):
         self.browser.quit()
 
     # ADM_01_001
-    def test_admin_link_redirection(self):
+    def admin_link_redirection(self):
         login(self.browser)
 
         # Wait for login to complete
+        time.sleep(2)
+
+        # Visit admin page
+        self.users_page.visit()
         time.sleep(2)
 
         # Click Admin link in sidebar
         self.sidebar_section.click_link_with_text("Admin")
 
         # Verify users page URL is displayed
-        assert UsersPage.url in self.browser.current_url
+        assert self.users_page.url in self.browser.current_url

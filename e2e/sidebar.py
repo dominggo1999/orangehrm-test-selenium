@@ -52,7 +52,7 @@ class Sidebar (unittest.TestCase):
         link_texts = [link["text"].lower() for link in sidebar_links]
         link_paths = [link["path"] for link in sidebar_links]
 
-        for link in self.sidebar_section.getAllLinks():
+        for link in self.sidebar_section.get_all_links():
             assert link.text.lower() in link_texts
             path = link.get_attribute("href")
             link_path = path.replace(create_target_url("/"), "/")
@@ -63,7 +63,7 @@ class Sidebar (unittest.TestCase):
         login(self.browser)
         time.sleep(2)
         self.sidebar_section.search_field().send_keys("Admin")
-        links = self.sidebar_section.getAllLinks()
+        links = self.sidebar_section.get_all_links()
         assert len(links) == 1
         assert links[0].text == "Admin"
 
@@ -72,7 +72,7 @@ class Sidebar (unittest.TestCase):
         login(self.browser)
         time.sleep(2)
         self.sidebar_section.search_field().send_keys("invalid_search")
-        links = self.sidebar_section.getAllLinks()
+        links = self.sidebar_section.get_all_links()
         assert len(links) == 0
 
 

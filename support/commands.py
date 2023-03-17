@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from config.credentials import VALID_USERNAME, VALID_PASSWORD
 from pages.login_page import LoginPage
+from sections.header_section import HeaderSection
 
 
 def loginWith(browser: webdriver.Chrome, username, password):
@@ -29,3 +30,8 @@ def login(browser: webdriver.Chrome):
 def should_include_login_page_url(browser: webdriver.Chrome):
     login_page = LoginPage(browser)
     assert login_page.url in browser.current_url
+
+
+def logout(browser: webdriver.Chrome):
+    header_section = HeaderSection(browser)
+    header_section.logout()

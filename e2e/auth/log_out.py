@@ -1,7 +1,7 @@
 import time
 import unittest
 from selenium import webdriver
-from support.commands import login, should_include_login_page_url
+from support.commands import login, should_include_login_page_url, logout
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 
@@ -20,7 +20,6 @@ class Logout (unittest.TestCase):
     def log_out(self):
         login(self.browser)
         time.sleep(2)
-        self.dashboard_page.profile_button().click()
-        self.dashboard_page.logout_button().click()
+        logout(self.browser)
         time.sleep(2)
         should_include_login_page_url(self.browser)

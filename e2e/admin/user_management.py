@@ -2,7 +2,7 @@ import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from support.commands import login, logout, select_option, fill_auto_complete, loginWith
+from support.commands import login, logout, select_option, fill_auto_complete, login_with
 from pages.admin.users_page import UsersPage
 from pages.admin.add_user_page import AddUserPage
 from pages.admin.edit_user_page import EditUserPage
@@ -111,7 +111,7 @@ class UserManagement(unittest.TestCase):
         time.sleep(2)
 
         # Try login with newly created user
-        loginWith(self.browser, USERNAME, PASSWORD)
+        login_with(self.browser, USERNAME, PASSWORD)
 
         assert self.dashboard_page.url in self.browser.current_url
 

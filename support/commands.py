@@ -11,11 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-# TODO
-# snake case
 
-
-def loginWith(browser: webdriver.Chrome, username, password):
+def login_with(browser: webdriver.Chrome, username, password):
     login_page = LoginPage(browser)
 
     # visit the login page
@@ -33,7 +30,7 @@ def loginWith(browser: webdriver.Chrome, username, password):
 
 
 def login(browser: webdriver.Chrome):
-    loginWith(browser, VALID_USERNAME, VALID_PASSWORD)
+    login_with(browser, VALID_USERNAME, VALID_PASSWORD)
 
 
 def should_include_login_page_url(browser: webdriver.Chrome):

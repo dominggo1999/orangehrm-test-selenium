@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from utils.create_target_url import create_target_url
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from typing import List
 
 
@@ -24,7 +26,10 @@ class UsersPage:
         return self.user_table().find_element(By.CSS_SELECTOR, ".oxd-table-header")
 
     def user_table_body(self) -> WebElement:
-        return self.user_table().find_element(By.CSS_SELECTOR, ".oxd-table-body")
+        wait = WebDriverWait(self.browser, 10)
+
+        return wait.until(EC.presence_of_element_located(
+            (By.CSS_SELECTOR, ".oxd-table-body")))
 
     def user_filter(self) -> WebElement:
         return self.browser.find_element(By.CSS_SELECTOR, ".oxd-table-filter")

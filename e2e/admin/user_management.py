@@ -2,7 +2,7 @@ import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from support.commands import login, logout, select_option, fill_auto_complete, login_with
+from support.commands import login, logout, select_option, fill_auto_complete, login_with, clear_input
 from pages.admin.users_page import UsersPage
 from pages.admin.add_user_page import AddUserPage
 from pages.admin.edit_user_page import EditUserPage
@@ -153,10 +153,7 @@ class UserManagement(unittest.TestCase):
 
         # Edit fields
 
-        # TODO
-        # Create command
-        self.edit_user_page.username_field().send_keys(Keys.CONTROL + "a")
-        self.edit_user_page.username_field().send_keys(Keys.DELETE)
+        clear_input(self.edit_user_page.username_field())
 
         self.edit_user_page.username_field().send_keys(USERNAME)
 
@@ -190,10 +187,7 @@ class UserManagement(unittest.TestCase):
         select_option(
             self.browser, self.add_user_page.status_options(), "")
 
-        # TODO
-        # Create command
-        self.edit_user_page.username_field().send_keys(Keys.CONTROL + "a")
-        self.edit_user_page.username_field().send_keys(Keys.DELETE)
+        clear_input(self.edit_user_page.username_field())
 
         # Click save
         self.edit_user_page.submit()

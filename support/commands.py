@@ -85,3 +85,9 @@ def scroll_to_top(browser: webdriver.Chrome):
     # Scroll to the top of the page
     body = browser.find_element_by_tag_name("body")
     body.send_keys(Keys.CONTROL + Keys.HOME)
+
+
+# For clearing input or text area
+def clear_input(element: WebElement):
+    element.send_keys(Keys.CONTROL + "a")
+    element.send_keys(Keys.DELETE)

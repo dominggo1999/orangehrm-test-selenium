@@ -102,8 +102,9 @@ class UserManagement(unittest.TestCase):
         # Should back to the users page
         assert self.add_user_page.url in self.browser.current_url
 
-        # TODO
         # Should display the new user
+        user_table_text = self.users_page.user_table_body().text
+        self.assertIn(USERNAME, user_table_text)
 
         # Logout
         logout(self.browser)
@@ -165,10 +166,12 @@ class UserManagement(unittest.TestCase):
 
         self.toast_section.success()
 
-        # TODO
         # Should display the updated user data in the user table
+        user_table_text = self.users_page.user_table_body().text
+        self.assertIn(USERNAME, user_table_text)
 
     # ADM_02_007
+
     def edit_user_blank_data(self):
         self.beforeEach()
 

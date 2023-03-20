@@ -2,7 +2,7 @@ This is an automation testing project for https://opensource-demo.orangehrmlive.
 
 The test case spreadsheet can be found here: https://docs.google.com/spreadsheets/d/115L08TGW0-nheZb_Q3uTYiTMbWqkQ5x5WKIqtxL_Lxc/edit?usp=sharing
 
-Cypress version for this project can be found here : https://github.com/dominggo1999/orangehrm-test-cypress
+The Cypress version for this project can be found here : https://github.com/dominggo1999/orangehrm-test-cypress
 
 To install dependencies run :
 
